@@ -65,7 +65,7 @@ function watcher() {
 	
 	if (color != lastColor) {
 		lastColor = color;
-		BluetoothBulb.color = color;
+		Floower.color = color;
 	}
 }
 			
@@ -80,12 +80,12 @@ window.setInterval(watcher, 100);
 
 document.getElementById('connect')
 	.addEventListener('click', () => {
-		BluetoothBulb.connect()
+		Floower.connect()
 			.then(() => {
 				document.body.classList.add('connected');
-				injectStyle(BluetoothBulb.color);
+				injectStyle(Floower.color);
 				
-				BluetoothBulb.addEventListener('disconnected', () => {
+				Floower.addEventListener('disconnected', () => {
 					document.body.classList.remove('connected');
 					injectStyle();
 				});
