@@ -15,12 +15,23 @@
 	<body class='color'>
 		<div class='content'>
 			<div class='lightbulb'>
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 303 299">
-					<path id="bulb" d="M579,259.5A151.35,151.35,0,0,1,512.39,385c-24.22,16.41-53.43,14-84.89,14s-60.53,2.46-84.71-13.87A151.51,151.51,0,1,1,579,259.5Z" transform="translate(-276 -108)" />
-					<path d="M329,222.5a4.5,4.5,0,0,1-4.42-5.37c4.58-23.37,18.41-43,40-56.62a119.74,119.74,0,0,1,62.41-18,4.5,4.5,0,0,1,0,9,110.5,110.5,0,0,0-57.6,16.61c-13.56,8.59-30.82,24.37-36,50.75A4.5,4.5,0,0,1,329,222.5Z" transform="translate(-276 -108)" style="fill:rgba(255,255,255,0.5)"/>
-					<path d="M478.7,407a151,151,0,0,0,33.69-17.13L342.79,390a151,151,0,0,0,33.5,17Z" transform="translate(-276 -108)" style="fill:#eee"/>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+					<g id="stem">
+						<polyline points="313.6,476.8 399.3,562.5 486,475.8"/>
+						<polyline points="438.9,478.9 399.3,562.5 359.7,478.7"/>
+						<line x1="399.3" y1="480.7" x2="399.3" y2="651.6"/>
+					</g>
+					
+					<g id="bulb">
+						<path class="petal left" d="M355.5,476.5c0,0-20.5,0.8-26.7,0.8c-40.1,0-40.1,0.3-60.9-43.4c-18.2-38.2-24.6-103.9-1-174.6c27.2-81.5,103.7-155.4,107.5-158.1c3.8-2.7,9.7-5.5,9.7,5.9S390.9,377.2,355.5,476.5z"/>
+						<path class="petal right" d="M444.5,476.5c0,0,20.5,0.8,26.7,0.8c40.1,0,40.1,0.3,60.9-43.4c18.2-38.2,24.6-103.9,1-174.6C506,177.8,429.4,103.9,425.6,101.2c-3.8-2.7-9.7-5.5-9.7,5.9S409.1,377.2,444.5,476.5z"/>
+						<path class="petal middle" d="M461.3,476.5c0,0,105-193.2-54.7-375.4c-2-2.3-6.1-2-6.1-2c-2,0-4.9-0.1-6.9,2.1C230.5,285.7,339,476.5,339,476.5s29.8,4.1,61.1,4.1S461.3,476.5,461.3,476.5z"/>
+					</g>
 				</svg>
 			</div>
+
+			<button id='open'><span>◡</span> Open</button>
+			<button id='close'><span>⚬</span> Close</button>
 		</div>
 
 		<div class='connect'>
@@ -38,7 +49,7 @@
 		<div class='settings'>
 			<div class='pills'>
 				<button id='color'>Color</button>
-				<button id='customize'>Customize</button>
+				<button id='customize'>Petals</button>
 			</div>
 		
 			<div class='views'>
@@ -58,26 +69,7 @@
 				</div>
 
 				<div id='customizeView'>
-					<style>
-				
-						@keyframes rainbow {
-							0% {fill: #ff0000;}
-							10% {fill: #ff8000;}
-							20% {fill: #ffff00;}
-							30% {fill: #80ff00;}
-							40% {fill: #00ff00;}
-							50% {fill: #00ff80;}
-							60% {fill: #00ffff;}
-							70% {fill: #0080ff;}
-							80% {fill: #0000ff;}
-							90% {fill: #8000ff;}
-							100% {fill: #ff0080;}
-						}
-						
-					</style>
-						
-					<style id='style' contenteditable='plaintext-only'>
-					</style>
+					
 				</div>
 			</div>			
 		</div>

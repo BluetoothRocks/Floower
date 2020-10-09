@@ -3,6 +3,9 @@
 
 :root {
 	--settings-height: 25vh;
+
+	--color: #000000;
+	--petal: 0;
 }
 
 * {
@@ -43,6 +46,57 @@ body.connected .content {
 }
 
 
+/* Petals */
+
+.content {
+
+}
+
+#stem * {
+	stroke: #333;
+	stroke-width: 0.3vh;
+	fill: none;
+}
+
+#bulb {
+	opacity: 1;
+	transition: opacity 5s;
+	fill: var(--color);
+}
+.open #bulb {
+	opacity: 0.7;
+}
+
+
+.petal {
+	opacity: 0.7;
+	transition: transform 5s, fill 1s, d 5s, opacity 5s;
+}
+.petal.left {
+	transform-origin: 42% 73%;
+}
+.petal.middle {
+	opacity: 0.9;
+	transform-origin: 50% 82%;
+}
+.petal.right {
+	transform-origin: 58% 73%;
+}
+.open .petal.left {
+	transform: rotate(calc(-0.6deg * var(--petal)));
+	opacity: 0.9;
+	d: path('M355.5,476.5c0,0-20.5,0.8-26.7,0.8c-32.3,0-54.9-29.9-60.9-43.4c-18.8-42.8-24.1-88.6-1-174.6c19.8-73.8,103.7-155.4,107.5-158.1c3.8-2.7,9.7-5.5,9.7,5.9S293.9,383,355.5,476.5z');
+}
+.open .petal.middle {
+	transform: scaleY(calc(1.0 - (0.004 * var(--petal))));
+	opacity: 1;
+	d: path('M461.3,476.5c0,0,120.1-51.1-54.7-378.4c-1.4-2.7-6.1-3-6.1-3c-2,0-5.5,0.4-6.9,3.1C218.9,425.4,339,476.5,339,476.5s29.8,29.9,61.1,29.9S461.3,476.5,461.3,476.5z');
+}
+.open .petal.right {
+	transform: rotate(calc(0.6deg * var(--petal)));
+	opacity: 0.9;
+	d: path('M444.5,476.5c0,0,20.5,0.8,26.7,0.8c32.3,0,54.9-29.9,60.9-43.4c18.8-42.8,24.1-88.6,1-174.6c-19.8-73.8-103.7-155.4-107.5-158.1c-3.8-2.7-9.7-5.5-9.7,5.9S506.2,383,444.5,476.5z');
+}
 
 
 /* Glasses */
@@ -83,6 +137,34 @@ body.connected .settings {
 }
 
 
+/* Open /close */
+
+#open, #close {
+	margin: 0vh 0.5vh 0 0.5vh;
+    background: #333;
+    color: #fff;
+    width: 8vh;
+    height: 3vh;
+    font-size: 1.4vh;
+    position: relative;
+    top: 10vh;
+    border-color: #333;
+}
+#open span, #close span {
+	font-size: 2vh;
+	line-height: 1.4vh;
+	margin-right: 0.4vh;
+}
+
+#close {
+	display: none;
+}
+.open #open {
+	display: none;
+}
+.open #close {
+	display: inline-block;
+}
 
 /* Pills */
 
@@ -175,26 +257,6 @@ body.customize div#customizeView {
 #colorView button.black {
 	background: #000000;
 }
-
-
-/* Style editor */
-
-style[contenteditable] {
-	white-space: pre;
-	font-family: monospace;
-	color: #fff;
-	
-	font-size: 2vh;
-	text-align: left;
-	margin: 0 10vh 10vh;
-	outline: none;
-}
-
-.connected style[contenteditable] {
-	display: block;
-}
-
-
 
 
 

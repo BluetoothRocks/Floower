@@ -13,25 +13,6 @@ document.getElementById('customize').addEventListener('click', (e) => {
 
 
 
-/* Inject styles in the editor */
-
-var style = document.getElementById('style');
-
-function injectStyle(c) {
-	if (c) {
-		style.innerHTML = 
-			"#bulb {\n" + 
-			"    fill: " + c + ";\n" +
-			"}";
-	}
-	else {
-		style.innerHTML = '';
-	}
-}
-
-
-
-
 
 /* Color swatches */
 
@@ -45,33 +26,12 @@ function handleMouseEvent(event) {
         return;
     }
     
-    var c = event.target.dataset.value;
-	injectStyle(c);
+	var c = event.target.dataset.value;
+	Floower.color = c;
+	document.body.style.setProperty('--color', c);
 
     event.preventDefault();
 }
-
-
-
-
-/* Watch CSS animations */
-
-var lastColor = '#cccccc';
-
-var bulb = document.getElementById('bulb');
-
-function watcher() {
-	color = normalizeColor(window.getComputedStyle(bulb).fill);
-	
-	if (color != lastColor) {
-		lastColor = color;
-		Floower.color = color;
-	}
-}
-			
-window.setInterval(watcher, 100);
-
-
 
 
 
@@ -83,11 +43,15 @@ document.getElementById('connect')
 		Floower.connect()
 			.then(() => {
 				document.body.classList.add('connected');
-				injectStyle(Floower.color);
+				document.body.style.setProperty('--color', Floower.color);
+				document.body.style.setProperty('--petal', Floower.petals);
+
+				if (Floower.petals) {
+					document.body.classList.add('open');
+				}
 				
 				Floower.addEventListener('disconnected', () => {
 					document.body.classList.remove('connected');
-					injectStyle();
 				});
 			});
 	});
@@ -96,33 +60,44 @@ document.getElementById('emulate')
 	.addEventListener('click', () => {
 	    emulateState = true;
 		document.body.classList.add('connected');
-
-		injectStyle();
 	});
 
 
+	document.getElementById('open')
+	.addEventListener('click', () => {
+		Floower.petals = 100;
+		document.body.style.setProperty('--petal', 100);
+		document.body.classList.add('open');
+
+	});	
 	
+	document.getElementById('close')
+	.addEventListener('click', () => {
+		Floower.petals = 0;
+		document.body.style.setProperty('--petal', 0);
+		document.body.classList.remove('open');
+	});	
 	
 
 
 
 /* Color format conversion */
 
-function normalizeColor(rgb) {
-	if (rgb.search("rgb") == -1) {
-		return rgb;
-	}
-	else if (rgb == 'rgba(0, 0, 0, 0)') {
-		return 'transparent';
-	}
-	else {
-		rgb = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+))?\)$/);
+// function normalizeColor(rgb) {
+// 	if (rgb.search("rgb") == -1) {
+// 		return rgb;
+// 	}
+// 	else if (rgb == 'rgba(0, 0, 0, 0)') {
+// 		return 'transparent';
+// 	}
+// 	else {
+// 		rgb = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+))?\)$/);
 		
-		function hex(x) {
-		   return ("0" + parseInt(x).toString(16)).slice(-2);
-		}
+// 		function hex(x) {
+// 		   return ("0" + parseInt(x).toString(16)).slice(-2);
+// 		}
 		
-		return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]); 
-	}
-}  
+// 		return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]); 
+// 	}
+// }  
 
