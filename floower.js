@@ -51,6 +51,21 @@
 			this._sendState(0x32);
 		}
 
+		open() {
+			this._state.petals = 100;
+			this._sendState(0x32);
+		}
+
+		close() {
+			this._state.petals = 0;
+			this._sendState(0x32);
+		}
+
+		toggle() {
+			this._state.petals = this._state.petals ? 0 : 100;
+			this._sendState(0x32);
+		}
+
 
 		/* Properties */
 

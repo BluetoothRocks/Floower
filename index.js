@@ -49,23 +49,31 @@ document.getElementById('disconnect').addEventListener('click', async () => {
 /* Open / close */
 
 document.getElementById('open').addEventListener('click', () => {
-	Floower.petals = 100;
+	Floower.open();
 	document.body.style.setProperty('--petal', 100);
 	document.body.classList.add('open');
 });	
 	
 document.getElementById('close').addEventListener('click', () => {
-	Floower.petals = 0;
+	Floower.close();
 	document.body.style.setProperty('--petal', 0);
 	document.body.classList.remove('open');
 });	
 
 document.getElementById('off').addEventListener('click', () => {
 	Floower.off();
-
 	document.body.style.setProperty('--color', "#000000");
 	document.body.style.setProperty('--petal', 0);
 	document.body.classList.remove('open');
+});	
+
+
+/* Petals */
+
+document.getElementById('bulb').addEventListener('click', () => {
+	Floower.toggle();
+	document.body.style.setProperty('--petal', Floower.petals);
+	document.body.classList.toggle('open');
 });	
 
 
