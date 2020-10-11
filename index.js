@@ -41,12 +41,13 @@ document.getElementById('connect').addEventListener('click', async () => {
 	});
 });
 
+
+
+/* Buttons */
+
 document.getElementById('disconnect').addEventListener('click', async () => {
 	Floower.disconnect();
 });
-
-
-/* Open / close */
 
 document.getElementById('open').addEventListener('click', () => {
 	Floower.open();

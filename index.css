@@ -33,22 +33,15 @@ button {
 
 
 
-.connect button#disconnect {
-	display: none;
+
+.buttons {
+	opacity: 0;
+	transition: opacity 1s;
 }
 
-body.connected .connect {
-	transform: translateY(-22rem) !important;
-	pointer-events: all !important;
+.connected .buttons {
+	opacity: 1;
 }
-
-body.connected .connect button#connect {
-	display: none;
-}
-body.connected .connect button#disconnect {
-	display: block;
-}
-
 
 
 /* Content */
