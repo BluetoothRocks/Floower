@@ -9,7 +9,7 @@
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<script type="text/javascript" src="lib/floower.js"></script>
+		<script type="text/javascript" src="floower.js"></script>
 	</head>
 	
 	<body class='color'>
@@ -19,7 +19,7 @@
 					<g id="stem">
 						<polyline points="313.6,476.8 399.3,562.5 486,475.8"/>
 						<polyline points="438.9,478.9 399.3,562.5 359.7,478.7"/>
-						<line x1="399.3" y1="480.7" x2="399.3" y2="651.6"/>
+						<line x1="399" y1="480" x2="399" y2="683"/>
 					</g>
 					
 					<g id="bulb">
@@ -30,8 +30,18 @@
 				</svg>
 			</div>
 
-			<button id='open'><span>◡</span> Open</button>
-			<button id='close'><span>⚬</span> Close</button>
+			<button id='open'>
+				<svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="m15 24.5c-11.9 6.8-11-19.1-11-19.1l11 19.1c11.9 6.8 11-19.1 11-19.1z"/></svg>
+				Open
+			</button>
+			<button id='close'>
+				<svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="m15 4s-13.7 22 0 22"/><path d="m15 26c13.7 0 0-22 0-22"/></svg>
+				Close
+			</button>
+			<button id='off'>
+				<svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><path d="m15 4v11"/><path d="m10 5.219c-3.558 1.821-6 5.51-6 9.781 0 6.075 4.925 11 11 11s11-4.925 11-11c0-4.271-2.442-7.96-6-9.781"/></svg>
+				 Off
+			</button>
 		</div>
 
 		<div class='connect'>
@@ -40,36 +50,28 @@
 				Floower<em>!</em>
 			</h1>
 			<p>
-				To use this demo you need a Floower. Don't have one? <a id='emulate'>Emulate!</a>
+				To use this demo you need a Floower. Touch the leaf for 5 seconds until the Floower start pulsing blue.
 			</p>
 
 			<button id='connect'>Connect</button>
+			<button id='disconnect'>Disconnect</button>
 		</div>
 
 		<div class='settings'>
 			<div class='pills'>
 				<button id='color'>Color</button>
-				<button id='customize'>Petals</button>
+				<button id='customize'>Settings</button>
 			</div>
 		
 			<div class='views'>
 				<div id='colorView'>
-					<div class='swatches'>
-						<button class='color white' data-value='#ffffff'></button>
-						<button class='color red' data-value='#ff0000'></button>
-						<button class='color green' data-value='#00ff00'></button>
-						<button class='color blue' data-value='#0000ff'></button>
-					</div>
-					<div class='swatches'>
-						<button class='color yellow' data-value='#ffff00'></button>
-						<button class='color cyan' data-value='#00ffff'></button>
-						<button class='color magenta' data-value='#ff00ff'></button>
-						<button class='color black' data-value='#000000'></button>
-					</div>
 				</div>
 
 				<div id='customizeView'>
-					
+					<label>
+						Touch sensitivity
+						<input id='threshold' type='range' min='35' max='55' value='45' step='1'>
+					</label>
 				</div>
 			</div>			
 		</div>

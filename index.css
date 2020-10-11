@@ -33,6 +33,23 @@ button {
 
 
 
+.connect button#disconnect {
+	display: none;
+}
+
+body.connected .connect {
+	transform: translateY(-22rem) !important;
+	pointer-events: all !important;
+}
+
+body.connected .connect button#connect {
+	display: none;
+}
+body.connected .connect button#disconnect {
+	display: block;
+}
+
+
 
 /* Content */
 
@@ -48,13 +65,10 @@ body.connected .content {
 
 /* Petals */
 
-.content {
-
-}
 
 #stem * {
 	stroke: #333;
-	stroke-width: 0.3vh;
+	stroke-width: 0.5vh;
 	fill: none;
 }
 
@@ -99,8 +113,6 @@ body.connected .content {
 }
 
 
-/* Glasses */
-
 .content .lightbulb {
 	position: absolute;
 	top: 10vh;
@@ -114,6 +126,7 @@ body.connected .content {
 	left: 0;
 	width: 100%;
 	height: 100%;
+	overflow: visible;
 }
 
 
@@ -139,21 +152,39 @@ body.connected .settings {
 
 /* Open /close */
 
-#open, #close {
+.content button {
 	margin: 0vh 0.5vh 0 0.5vh;
     background: #333;
     color: #fff;
-    width: 8vh;
-    height: 3vh;
-    font-size: 1.4vh;
+    width: 9vh;
+    height: 4vh;
+	font-size: 1.6vh;
+	line-height: 100%;
     position: relative;
     top: 10vh;
-    border-color: #333;
+	border-color: #333;
+	
+	display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
-#open span, #close span {
-	font-size: 2vh;
+.content button span {
+	font-size: 2.2vh;
 	line-height: 1.4vh;
 	margin-right: 0.4vh;
+}
+.content button svg {
+    position: static;
+    width: 2.2vh;
+    height: 2.2vh;
+    margin-right: 0.4vh;
+	
+	fill: none;
+    stroke: currentColor;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-miterlimit: 10;
 }
 
 #close {
@@ -163,7 +194,7 @@ body.connected .settings {
 	display: none;
 }
 .open #close {
-	display: inline-block;
+	display: inline-flex;
 }
 
 /* Pills */
@@ -233,30 +264,11 @@ body.customize div#customizeView {
 	height: 6vh;
 	margin: -1vh 1vh 4vh;
 }
-#colorView button.red {
-	background: #ff0000;
-}
-#colorView button.green {
-	background: #00ff00;
-}
-#colorView button.blue {
-	background: #0000ff;
-}
-#colorView button.yellow {
-	background: #ffff00;
-}
-#colorView button.cyan {
-	background: #00ffff;
-}
-#colorView button.magenta {
-	background: #ff00ff;
-}
-#colorView button.white {
-	background: #ffffff;
-}
-#colorView button.black {
-	background: #000000;
-}
 
 
+/* Settings */
 
+#customizeView input {
+	width: 15vh;
+	margin-left: 2vh;
+}
