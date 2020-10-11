@@ -74,8 +74,6 @@
 		}
 
 		set color(color) {
-            if (!this._service) return;
-
 			var c = parseInt(color.substring(1), 16);
 
 			this._state.r = (c >> 16) & 255;
@@ -113,10 +111,7 @@
 		}
 
 		set petals(value) {
-			if (!this._service) return;
-
 			this._state.petals = value;
-
 			this._sendState(0x32);
 		}
 
