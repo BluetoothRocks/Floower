@@ -156,13 +156,13 @@ body.connected .settings {
 	margin: 0vh 0.5vh 0 0.5vh;
     background: #333;
     color: #fff;
-    width: 9vh;
     height: 4vh;
 	font-size: 1.6vh;
 	line-height: 100%;
     position: relative;
     top: 10vh;
 	border-color: #333;
+	padding: 0 1vh;
 	
 	display: inline-flex;
     align-items: center;
