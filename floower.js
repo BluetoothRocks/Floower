@@ -28,14 +28,14 @@
 
 			let server = await device.gatt.connect();
 			this._service = await server.getPrimaryService('28e17913-66c1-475f-a76e-86b5242f4cec');
-			
+
 			await this._retrieveState();
 			await this._retrieveThreshold();
 			await this._retrieveColorScheme();
 		}
 
 		disconnect() {
-			this._disconnect();
+			this._service.device.gatt.disconnect();
 		}
 
 		addEventListener(e, f) {
