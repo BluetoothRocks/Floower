@@ -81,6 +81,7 @@ body.connected .content {
 .petal {
 	opacity: 0.7;
 	transition: transform 6s, fill 1s, d 6s, opacity 6s;
+	stroke: rgba(255,255,255,0.15);
 }
 .petal.left {
 	transform-origin: 42% 73%;
