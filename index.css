@@ -35,6 +35,9 @@ button {
 
 
 .buttons {
+    position: relative;
+    top: 4vh;
+
 	opacity: 0;
 	transition: opacity 1s;
 }
@@ -91,20 +94,45 @@ body.connected .content {
 }
 .open .petal.left {
 	transform: rotate(calc(-0.6deg * var(--petal)));
-	opacity: 0.9;
+	opacity: 0.8;
 	d: path('M355.5,476.5c0,0-20.5,0.8-26.7,0.8c-32.3,0-54.9-29.9-60.9-43.4c-18.8-42.8-24.1-88.6-1-174.6c19.8-73.8,103.7-155.4,107.5-158.1c3.8-2.7,9.7-5.5,9.7,5.9S293.9,383,355.5,476.5z');
 }
 .open .petal.middle {
-	transform: scaleY(calc(1.0 - (0.004 * var(--petal))));
+	transform: scaleY(calc(1.0 - (0.004 * var(--petal)))) rotate(-2deg);
 	opacity: 1;
 	d: path('M461.3,476.5c0,0,120.1-51.1-54.7-378.4c-1.4-2.7-6.1-3-6.1-3c-2,0-5.5,0.4-6.9,3.1C218.9,425.4,339,476.5,339,476.5s29.8,29.9,61.1,29.9S461.3,476.5,461.3,476.5z');
 }
 .open .petal.right {
 	transform: rotate(calc(0.6deg * var(--petal)));
-	opacity: 0.9;
+	opacity: 0.8;
 	d: path('M444.5,476.5c0,0,20.5,0.8,26.7,0.8c32.3,0,54.9-29.9,60.9-43.4c18.8-42.8,24.1-88.6,1-174.6c-19.8-73.8-103.7-155.4-107.5-158.1c-3.8-2.7-9.7-5.5-9.7,5.9S506.2,383,444.5,476.5z');
 }
 
+.petal.back {
+	opacity: 0;
+}
+
+.open .petal.back.left {
+	transform: rotate(calc(-0.58deg * var(--petal)));
+	opacity: 0.5;
+}
+.open .petal.back.middle {
+	transform: scaleY(calc(1.0 - (0.004 * var(--petal)))) rotate(2deg);
+	opacity: 0.5;
+}
+.open .petal.back.right {
+	transform: rotate(calc(0.62deg * var(--petal)));
+	opacity: 0.5;
+}
+
+
+#shadow feDropShadow {
+	flood-color: var(--color);
+    flood-opacity: 0.7;
+}
+.petal.front.middle {
+	filter:url(#shadow);
+}
 
 .content .lightbulb {
 	position: absolute;
@@ -146,14 +174,12 @@ body.connected .settings {
 /* Open /close */
 
 .content button {
-	margin: 0vh 0.5vh 0 0.5vh;
+	margin: 0vh 0.5vh 1.5vh 0.5vh;
     background: #333;
     color: #fff;
-    height: 4vh;
-	font-size: 1.6vh;
+    height: 3vh;
+	font-size: 1.4vh;
 	line-height: 100%;
-    position: relative;
-    top: 10vh;
 	border-color: #333;
 	padding: 0 1vh;
 	
@@ -168,8 +194,8 @@ body.connected .settings {
 }
 .content button svg {
     position: static;
-    width: 2.2vh;
-    height: 2.2vh;
+    width: 2vh;
+    height: 2vh;
     margin-right: 0.4vh;
 	
 	fill: none;
@@ -178,6 +204,17 @@ body.connected .settings {
 	stroke-linecap: round;
 	stroke-linejoin: round;
 	stroke-miterlimit: 10;
+}
+.content button#open,
+.content button#close {
+	height: 6vh;
+	font-size: 2vh;
+	padding: 0 2vh;
+}
+.content button#open svg,
+.content button#close svg {
+    width: 2.3vh;
+    height: 2.3vh;
 }
 
 #close {
