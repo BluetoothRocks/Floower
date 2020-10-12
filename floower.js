@@ -20,8 +20,7 @@
 
 		async connect() {
 			let device = await navigator.bluetooth.requestDevice({
-				filters: [ { namePrefix: 'Floower' } ], 
-				optionalServices: [ '28e17913-66c1-475f-a76e-86b5242f4cec' ]
+				filters: [ { services: [ '28e17913-66c1-475f-a76e-86b5242f4cec' ] } ]
 			});
 
 			device.addEventListener('gattserverdisconnected', this._disconnect.bind(this));
