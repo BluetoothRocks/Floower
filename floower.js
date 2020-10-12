@@ -16,18 +16,62 @@
 			}
 		}
 
+
 		/* Functions */
+
+		reconnect() {
+			return new Promise(async (resolve, reject) => {
+				let device;
+			
+				if (navigator.bluetooth.getDevices) {
+					let id = localStorage.getItem('last-used-device');
+	
+					if (id) {
+						let devices = await navigator.bluetooth.getDevices();
+	
+						devices.forEach(d => {
+							if (d.id == id) {
+								device = d;
+							}
+						});
+					}
+				}
+	
+				if (device) {
+					let advertisementreceived = false;
+	
+					device.addEventListener('advertisementreceived', async (event) => {
+						if (!advertisementreceived && !this._service) {
+							advertisementreceived = true;
+	
+							let server = await device.gatt.connect();
+							await this.initialize(server);
+
+							resolve();
+						}
+					});
+	
+					await device.watchAdvertisements();
+				}
+			});
+		}
 
 		async connect() {
 			let device = await navigator.bluetooth.requestDevice({
 				filters: [ { services: [ '28e17913-66c1-475f-a76e-86b5242f4cec' ] } ]
-			});
+			});		
 
-			device.addEventListener('gattserverdisconnected', this._disconnect.bind(this));
-
+			localStorage.setItem('last-used-device', device.id);
+			
 			let server = await device.gatt.connect();
-			this._service = await server.getPrimaryService('28e17913-66c1-475f-a76e-86b5242f4cec');
+			await this.initialize(server);
+		}
 
+		async initialize(server) {
+			server.device.addEventListener('gattserverdisconnected', this._disconnect.bind(this));
+
+			this._service = await server.getPrimaryService('28e17913-66c1-475f-a76e-86b5242f4cec');
+	
 			await this._retrieveState();
 			await this._retrieveThreshold();
 			await this._retrieveColorScheme();
@@ -35,6 +79,7 @@
 
 		disconnect() {
 			this._service.device.gatt.disconnect();
+			localStorage.removeItem('last-used-device');
 		}
 
 		addEventListener(e, f) {
@@ -67,6 +112,10 @@
 
 
 		/* Properties */
+
+		get connected() {
+			return this._service && this._service.device.gatt.connected;
+		}
 
 		get color() {
 			return this._rgbToHex(this._state.r, this._state.g, this._state.b);

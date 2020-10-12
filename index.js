@@ -1,9 +1,7 @@
 
 /* Connect to device */
 
-document.getElementById('connect').addEventListener('click', async () => {
-	await Floower.connect();
-
+function connected() {
 	document.body.classList.add('connected');
 	document.body.style.setProperty('--color', Floower.color);
 	document.body.style.setProperty('--petal', Floower.petals);
@@ -39,6 +37,24 @@ document.getElementById('connect').addEventListener('click', async () => {
 
 		document.getElementById('colorView').innerHTML = '';
 	});
+}
+
+async function reconnect() {
+	await Floower.reconnect();
+
+	if (Floower.connected) {
+		connected();
+	}
+}
+
+reconnect();
+
+document.getElementById('connect').addEventListener('click', async () => {
+	await Floower.connect();
+
+	if (Floower.connected) {
+		connected();
+	}
 });
 
 
