@@ -47,6 +47,17 @@ button {
 }
 
 
+/* Requirements */
+
+#requirements {
+	margin-top: 1vh;
+	display: none;
+}
+.unsupported #requirements {
+	display: block;
+}
+
+
 /* Content */
 
 .content {

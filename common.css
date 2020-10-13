@@ -61,6 +61,11 @@ body.connected .connect {
 	padding: 1rem 2rem;
 	font-size: 3rem;
 	text-transform: lowercase;
+	transition: background-color 1s, border-color 1s;
+}
+.connect button:disabled {
+	background-color: #ccc;
+	border-color: #ccc;
 }
 .connect a {
 	color: #367ebd;

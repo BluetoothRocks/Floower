@@ -47,16 +47,21 @@ async function reconnect() {
 	}
 }
 
-reconnect();
+if (navigator.bluetooth) {
+	reconnect();
 
-document.getElementById('connect').addEventListener('click', async () => {
-	await Floower.connect();
+	document.getElementById('connect').disabled = false;
+	document.getElementById('connect').addEventListener('click', async () => {
+		await Floower.connect();
 
-	if (Floower.connected) {
-		connected();
-	}
-});
-
+		if (Floower.connected) {
+			connected();
+		}
+	});
+}
+else {
+	document.body.classList.add('unsupported');
+}
 
 
 /* Buttons */
