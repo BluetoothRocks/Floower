@@ -12,21 +12,15 @@ function connected() {
 
 	document.getElementById('threshold').value = Floower.threshold;
 
-	let container = document.getElementById('swatches');
-	let swatches;
+	let swatches = document.getElementById('swatches');
 
 	Floower.colorScheme.forEach((color, i) => {
-		if (i % 4 == 0) {
-			swatches = document.createElement('div');
-			container.appendChild(swatches);
-		}
-
 		let button = document.createElement('button');
 		button.className = 'color';
 		button.style.backgroundColor = color;
 		button.dataset.value = color;
 		button.dataset.swatch = i;
-		swatches.appendChild(button);
+		swatches.insertBefore(button, swatches.lastElementChild);
 	});
 	
 	Floower.addEventListener('disconnected', () => {
@@ -153,7 +147,7 @@ function createPicker(event) {
 	event.preventDefault();
 }
 
-var controls = document.getElementById('colorView');
+var controls = document.getElementById('swatches');
 controls.addEventListener('mousedown', handleMouseEvent);
 controls.addEventListener('touchstart', handleMouseEvent);
 
@@ -165,16 +159,20 @@ function handleMouseEvent(event) {
     if (event.target.tagName != 'BUTTON') {
         return;
 	}
-	
+
+	if (!event.target.dataset.value) {
+		return;
+	}
+
 	if (event.altKey || event.ctrlKey) {
 		return createPicker(event);
 	}
-    
+
 	var c = event.target.dataset.value;
 	Floower.color = c;
 	document.body.style.setProperty('--color', c);
 
-    event.preventDefault();
+	event.preventDefault();
 }
 
 

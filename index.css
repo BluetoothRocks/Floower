@@ -187,12 +187,12 @@ body.connected .settings {
 
 .content button {
 	margin: 0vh 0.5vh 1.5vh 0.5vh;
-    background: #333;
-    color: #fff;
+    background: #383838;
+	border-color: #444;
+    color: #ccc;
     height: 3vh;
-	font-size: 1.4vh;
+	font-size: 1.2vh;
 	line-height: 100%;
-	border-color: #333;
 	padding: 0 1vh;
 	
 	display: inline-flex;
@@ -219,6 +219,9 @@ body.connected .settings {
 }
 .content button#open,
 .content button#close {
+    background: #333;
+	border-color: #333;
+    color: #fff;
 	height: 6vh;
 	font-size: 2vh;
 	padding: 0 2vh;
@@ -296,15 +299,28 @@ body.customize div#customizeView {
 
 /* Colors */
 
-#swatches div {
+#colorView div {
 	display: inline-block;
 	white-space: nowrap;
 }
 
-#swatches button.color {
+#colorView button.color {
 	width: 6vh;
 	height: 6vh;
 	margin: -1vh 1vh 4vh;
+	vertical-align: top;
+}
+
+#colorView button#off {
+	background-color: #000;
+	fill: none;
+	stroke: #ccc;
+	stroke-width: 2;
+}
+
+#colorView button#off svg {
+	width: 3vh;
+	height: 3vh;
 }
 
 #colorView p {
