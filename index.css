@@ -296,17 +296,21 @@ body.customize div#customizeView {
 
 /* Colors */
 
-.swatches {
+#swatches div {
 	display: inline-block;
 	white-space: nowrap;
 }
 
-#colorView button.color {
+#swatches button.color {
 	width: 6vh;
 	height: 6vh;
 	margin: -1vh 1vh 4vh;
 }
 
+#colorView p {
+	color: #aaa;
+	font-size: 1vh;
+}
 
 /* Settings */
 

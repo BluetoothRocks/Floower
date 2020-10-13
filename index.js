@@ -12,13 +12,12 @@ function connected() {
 
 	document.getElementById('threshold').value = Floower.threshold;
 
-	let container = document.getElementById('colorView');
+	let container = document.getElementById('swatches');
 	let swatches;
 
 	Floower.colorScheme.forEach((color, i) => {
 		if (i % 4 == 0) {
 			swatches = document.createElement('div');
-			swatches.className = 'swatches';
 			container.appendChild(swatches);
 		}
 
