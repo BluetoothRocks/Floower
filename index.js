@@ -26,8 +26,9 @@ function connected() {
 	
 	Floower.addEventListener('disconnected', () => {
 		document.body.classList.remove('connected');
+		document.body.classList.remove('on');
 		document.body.style.setProperty('--petal', 0);
-		document.body.style.setProperty('--color', '#000000');
+		document.body.style.removeProperty('--color');
 
 		document.getElementById('colorView').innerHTML = '';
 	});
