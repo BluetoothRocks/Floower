@@ -4,7 +4,7 @@
 :root {
 	--settings-height: 25vh;
 
-	--color: #000000;
+	--color: #666666;
 	--petal: 0;
 }
 
@@ -30,6 +30,9 @@ button {
 	outline: none;
 	cursor: pointer;
 }
+
+
+
 
 
 
@@ -146,7 +149,7 @@ body.connected .content {
 	flood-color: #fff;
     flood-opacity: 0.1;
 }
-.petal.front.middle {
+body.on .petal.front.middle {
 	filter:url(#shadow);
 }
 

@@ -118,7 +118,11 @@
 		}
 
 		get color() {
-			return this._rgbToHex(this._state.r, this._state.g, this._state.b);
+			if (this._state.r != 0 || this._state.g != 0 || this._state.b != 0) {
+				return this._rgbToHex(this._state.r, this._state.g, this._state.b);
+			}
+			
+			return null;
 		}
 
 		set color(color) {

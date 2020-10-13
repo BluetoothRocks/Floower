@@ -5,6 +5,7 @@ function connected() {
 	document.body.classList.add('connected');
 	document.body.style.setProperty('--color', Floower.color);
 	document.body.style.setProperty('--petal', Floower.petals);
+	document.body.classList[Floower.color ? 'add' : 'remove']('on');
 
 	if (Floower.petals) {
 		document.body.classList.add('open');
@@ -77,9 +78,10 @@ document.getElementById('close').addEventListener('click', () => {
 
 document.getElementById('off').addEventListener('click', () => {
 	Floower.off();
-	document.body.style.setProperty('--color', "#000000");
+	document.body.style.removeProperty('--color');
 	document.body.style.setProperty('--petal', 0);
 	document.body.classList.remove('open');
+	document.body.classList.remove('on');
 });	
 
 
@@ -171,6 +173,7 @@ function handleMouseEvent(event) {
 	var c = event.target.dataset.value;
 	Floower.color = c;
 	document.body.style.setProperty('--color', c);
+	document.body.classList.add('on');
 
 	event.preventDefault();
 }
